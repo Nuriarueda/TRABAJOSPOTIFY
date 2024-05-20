@@ -13,6 +13,6 @@
     //Pool de conexiones a la base de datos
     ConnectionPool pool = new ConnectionPool("jdbc:mysql://localhost:3306/users", dbuser, dbpassword);
     CancionesService auth = new CancionesService(pool.getConnection());
-    Canciones canciones = auth.create(artista, cancion);
+    auth.create(artista, cancion);
     response.sendRedirect("biblioteca.jsp");
 %> 

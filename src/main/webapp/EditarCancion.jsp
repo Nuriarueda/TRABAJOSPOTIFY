@@ -5,7 +5,7 @@
 <%@page import="java.sql.SQLException"%>
 <%
     // Obtener parámetros y credenciales
-    String codCancion = request.getParameter("codCancion");
+    int codCancion = Integer.parseInt(request.getParameter("codCancion"));
     String dbuser = "juan";
     String dbpassword = "12345678";
     ConnectionPool pool = new ConnectionPool("jdbc:mysql://localhost:3306/users", dbuser, dbpassword);
@@ -19,7 +19,7 @@
     if (request.getMethod().equalsIgnoreCase("POST")) {
         artista = request.getParameter("artista");
         cancion = request.getParameter("cancion");
-        Canciones newLista = new Canciones(Long.parseLong(codCancion), artista, cancion);
+        Canciones newLista = new Canciones(codCancion, artista, cancion);
 
         if (auth.update(newLista) == 1) {
             session.setAttribute("cancion", newLista);
@@ -30,7 +30,7 @@
             return;
         }
     } else { // Si el método de la solicitud es GET, mostrar el formulario con los datos actuales
-        Canciones cancionObj = auth.requestById(Long.parseLong(codCancion));
+        Canciones cancionObj = auth.requestById((codCancion));
         artista = cancionObj.getArtista();
         cancion = cancionObj.getCancion();
     }

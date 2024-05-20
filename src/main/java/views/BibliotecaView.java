@@ -29,12 +29,12 @@ public class BibliotecaView {
             sb.append("<td>");
             sb.append("<form action='EditarCancion.jsp' method='GET' style='display:inline;'>");
             sb.append("<input type='hidden' name='codCancion' value='").append(cancion.getCodCancion()).append("'/>");
-            sb.append("<button type='submit' class='btn btn-warning'>Editar</button>");
+            sb.append("<button type='submit' class='btn btn-outline-success'>Editar</button>");
             sb.append("</form>");
             sb.append(" ");
             sb.append("<form action='BorrarCancion.jsp' method='POST' style='display:inline;' onsubmit='return confirm(\"¿Estás seguro de que deseas borrar esta canción?\");'>");
             sb.append("<input type='hidden' name='codCancion' value='").append(cancion.getCodCancion()).append("'/>");
-            sb.append("<button type='submit' class='btn btn-danger'>Borrar</button>");
+            sb.append("<button type='submit' class='btn btn-outline-danger'>Borrar</button>");
             sb.append("</form>");
             sb.append("</td>");
             sb.append("</tr>");
